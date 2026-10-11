@@ -1,0 +1,67 @@
+{
+  "game": {
+    "name": "Be a YouTuber! 🔴🎥",
+    "shortName": "Be a YouTuber!",
+    "developer": "IM A YOUTUBER",
+    "universeId": 8572854650,
+    "placeId": 120564326011184,
+    "created": "2025-08-28",
+    "updated": "2026-09-19",
+    "visits": 130513839,
+    "favorites": 885975,
+    "ccu": 362,
+    "robloxUrl": "https://www.roblox.com/games/120564326011184/Be-a-YouTuber",
+    "groupUrl": "https://www.roblox.com/communities/678579317"
+  },
+  "newGame": {
+    "name": "Become a Youtuber! 💻",
+    "developer": "Incrementality Inc",
+    "universeId": 10767115221,
+    "placeId": 120731951270516,
+    "created": "2026-09-19",
+    "updated": "2026-10-07",
+    "visits": 304707,
+    "favorites": 2567,
+    "ccu": 681,
+    "robloxUrl": "https://www.roblox.com/games/120731951270516/Become-a-Youtuber",
+    "hasCodes": false
+  },
+  "codes": [
+    { "code": "release", "reward": "250 Cash", "sources": 4, "note": "Named in the game description itself" },
+    { "code": "100million", "reward": "100 Rebirth Coins", "sources": 2 },
+    { "code": "850kfavs", "reward": "85 Rebirth Coins", "sources": 1, "fresh": true },
+    { "code": "800kfavs", "reward": "80 Rebirth Coins", "sources": 2 },
+    { "code": "underwater", "reward": "50 Rebirth Coins", "sources": 3 },
+    { "code": "summer", "reward": "50 Rebirth Coins", "sources": 2 },
+    { "code": "gifting", "reward": "50 Rebirth Coins", "sources": 1, "fresh": true },
+    { "code": "115mvisits", "reward": "45 Rebirth Coins", "sources": 1, "fresh": true },
+    { "code": "350klikes", "reward": "40 Rebirth Coins", "sources": 3 },
+    { "code": "750kfavs", "reward": "40 Rebirth Coins", "sources": 3 },
+    { "code": "400klikes", "reward": "40 Rebirth Coins", "sources": 2, "note": "One tracker lists 80 — majority reading shown" },
+    { "code": "450klikes", "reward": "40 Rebirth Coins", "sources": 1, "fresh": true },
+    { "code": "90mvisits", "reward": "40 Rebirth Coins", "sources": 2 },
+    { "code": "65mVisits", "reward": "30 Rebirth Coins", "sources": 3, "note": "One tracker lists 50 — majority reading shown" },
+    { "code": "75mVisits", "reward": "30 Rebirth Coins", "sources": 3 },
+    { "code": "80mVisits", "reward": "30 Rebirth Coins", "sources": 2 },
+    { "code": "200KLikes", "reward": "25 Rebirth Coins", "sources": 3 },
+    { "code": "100klikes", "reward": "15 Rebirth Coins", "sources": 3 },
+    { "code": "300klikes", "reward": "10 Rebirth Coins", "sources": 3 },
+    { "code": "50mVisits", "reward": "10 Rebirth Coins", "sources": 3 },
+    { "code": "50klikes", "reward": "10 Rebirth Coins", "sources": 3 },
+    { "code": "Mutations", "reward": "10 Rebirth Coins", "sources": 3 },
+    { "code": "30klikes", "reward": "5 Rebirth Coins", "sources": 3 },
+    { "code": "20KLikes", "reward": "5 Rebirth Coins", "sources": 3 }
+  ],
+  "redeemSteps": [
+    "Launch Be a YouTuber! 🔴🎥 on Roblox — liking the game and joining the developer's group first is recommended by every tracker, some rewards are tied to it.",
+    "Click the Shop icon on the left side of the screen.",
+    "Scroll to the bottom of the Shop menu to find the Code text box.",
+    "Paste the code exactly as shown — codes are case-sensitive, which is why every row here has a copy button.",
+    "Press Redeem. The reward lands in your account immediately; a correct code that fails has usually just retired."
+  ],
+  "gaps": [
+    "The four fresh codes (115mvisits, 850kfavs, 450klikes, gifting) currently rest on a single tracker each — they are published here labelled as such until a second listing matches.",
+    "Trackers almost never mark retirements for this game, so there is no reliable expired-code graveyard anywhere; codes here are delisted only when every tracked source drops them.",
+    "Whether any code is hard-locked behind group membership is unverified — every tracker recommends joining, none proves it is required."
+  ]
+}

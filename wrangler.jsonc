@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "becomeayoutubercodes",
+  "compatibility_date": "2026-08-01",
+  // Static site: `output: export` emits ./out, served directly as assets.
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}

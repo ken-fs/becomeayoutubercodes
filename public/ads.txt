@@ -1,0 +1,7 @@
+# ads.txt — authorized digital sellers.
+#
+# AdSense (shared account across sites)
+google.com, pub-4969757168101127, DIRECT, f08c47fec0942fa0
+# Adsterra — TODO: paste the ads.txt record from the Adsterra dashboard here
+# (format: <host>, <publisher-id>, DIRECT, <tag-id>). Without it, demand-side
+# platforms cannot verify that this site is allowed to sell Adsterra inventory.

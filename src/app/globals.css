@@ -1,0 +1,249 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+/* synth's two fonts, self-hosted through npm (no Google request at build). */
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/jetbrains-mono";
+
+/*
+ * Theme: synth — 霓虹网格 (Neon Grid) from Ship/game-themes/tokens/synth.css.
+ * Picked 2026-10-10 because the game's own key art is a dark navy frame with
+ * electric-blue lightning; the two biggest competing sites ship warm-white or
+ * plain-black themes, so the neon grid keeps this site distinct in a SERP
+ * screenshot while matching what players see in the game itself.
+ *
+ * Contract with the theme library: same token names (paper / ink / rust /
+ * ochre / rule), remapped here onto the shadcn variables the components use.
+ * Dark is the only mode — the palette has no light counterpart.
+ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains);
+  --font-heading: var(--font-space-grotesk);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Rarity ladder, brightest = rarest. Ordinal data, one ramp — Zenless down
+     to Epic is a brightness curve, not a rainbow. */
+  --color-rarity-zenless: var(--rarity-zenless);
+  --color-rarity-arcane: var(--rarity-arcane);
+  --color-rarity-mythic: var(--rarity-mythic);
+  --color-rarity-legendary: var(--rarity-legendary);
+  --color-rarity-epic: var(--rarity-epic);
+
+  /* Radius lock: 2 values. Controls 8px, containers 12px (synth signature). */
+  --radius-control: 8px;
+  --radius-container: 12px;
+  --radius: 12px;
+}
+
+:root {
+  /* synth tokens: paper #0a0c14 · card #121626 · ink #e6f1ff · rust #22d3ee
+     · ochre #e83e8c · rule #1c2238 / #2a3354. Contrast (from the theme file):
+     ink 17.1:1 on paper; cyan text 10.8:1; cyan button with dark ink 10.5:1. */
+  --background: #0a0c14;
+  --foreground: #e6f1ff;
+  --card: #121626;
+  --card-foreground: #e6f1ff;
+  --popover: #121626;
+  --popover-foreground: #e6f1ff;
+  --primary: #22d3ee;
+  --primary-foreground: #04121a;
+  --secondary: #1c2238;
+  --secondary-foreground: #e6f1ff;
+  --muted: #151a2c;
+  --muted-foreground: #a9b8d4;
+  --accent: #1c2238;
+  --accent-foreground: #e6f1ff;
+  --destructive: #ff5c7a;
+  --border: #1c2238;
+  --input: #1c2238;
+  --ring: #22d3ee;
+
+  --font-space-grotesk: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-jetbrains: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  --rarity-zenless: #67e8f9;
+  --rarity-arcane: #22d3ee;
+  --rarity-mythic: #e83e8c;
+  --rarity-legendary: #8ea2c8;
+  --rarity-epic: #5f6d8c;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    background-color: var(--background);
+  }
+  body {
+    @apply text-foreground;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+    background-color: var(--background);
+    /* synth signature: two neon corner glows over a fixed 40px grid. */
+    background-image:
+      radial-gradient(50rem 30rem at 15% -5%, rgb(34 211 238 / 0.14), transparent 70%),
+      radial-gradient(44rem 28rem at 95% 10%, rgb(232 62 140 / 0.12), transparent 70%),
+      linear-gradient(rgb(230 241 255 / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(230 241 255 / 0.03) 1px, transparent 1px);
+    background-size: auto, auto, 40px 40px, 40px 40px;
+    background-attachment: fixed;
+  }
+  /* Scanlines, kept under the theme's 0.3 ceiling so long articles stay legible. */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    opacity: 0.18;
+    background: repeating-linear-gradient(0deg, rgb(0 0 0 / 0.5) 0 1px, transparent 1px 3px);
+  }
+  h1,
+  h2 {
+    font-family: var(--font-space-grotesk), ui-sans-serif, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+  h1 .glow,
+  h2 .glow {
+    text-shadow: 0 0 24px rgb(34 211 238 / 0.6);
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+@layer utilities {
+  .rule {
+    border-color: var(--border);
+  }
+  /* One elevation level. Neon sites read shadow as glow, so this stays soft. */
+  .lift {
+    box-shadow:
+      inset 0 1px 0 rgb(34 211 238 / 0.18),
+      0 8px 28px -12px rgb(0 0 0 / 0.75);
+  }
+}
+
+/*
+ * Theme signature classes, ported from game-themes/tokens/synth.css so the
+ * shared contract holds: same class names, same look.
+ */
+.tag {
+  display: inline-block;
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.14rem 0.5rem;
+  color: var(--primary);
+  border: 1px solid rgb(34 211 238 / 0.55);
+  border-radius: 4px;
+  background: rgb(34 211 238 / 0.08);
+}
+.card-glow {
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-glow:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow:
+    0 0 0 1px rgb(34 211 238 / 0.4),
+    0 0 32px -6px rgb(34 211 238 / 0.55);
+}
+.btn-ember {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  color: #04121a;
+  background: var(--primary);
+  box-shadow:
+    0 0 0 1px #67e8f9,
+    0 0 28px -4px rgb(34 211 238 / 0.75);
+}
+.btn-ember:hover {
+  background: #67e8f9;
+  transform: translateY(-1px);
+}
+
+/* Hero floor: the running perspective grid, pure CSS, no library. */
+.hero-glow {
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  bottom: -38%;
+  height: 56%;
+  pointer-events: none;
+  z-index: -1;
+  perspective: 420px;
+}
+.hero-glow span:nth-child(1) {
+  position: absolute;
+  inset: 0;
+  transform: rotateX(62deg);
+  transform-origin: 50% 0;
+  background-image:
+    linear-gradient(rgb(34 211 238 / 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(232 62 140 / 0.45) 1px, transparent 1px);
+  /* Constant speed on purpose: the floor runs forward, easing stutters. */
+  background-size: 60px 60px;
+  animation: synth-run 3s linear infinite;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 35%);
+  mask-image: linear-gradient(to bottom, transparent, #000 35%);
+}
+.hero-glow span:nth-child(2) {
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  top: -2px;
+  height: 2px;
+  background: var(--primary);
+  box-shadow: 0 0 40px 8px rgb(34 211 238 / 0.5);
+}
+.hero-glow span:nth-child(3) {
+  display: none;
+}
+@keyframes synth-run {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 60px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow span:nth-child(1) {
+    animation: none;
+  }
+}
