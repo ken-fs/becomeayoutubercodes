@@ -12,8 +12,9 @@
 // A slot with an empty key renders nothing, so this file is safe to ship before
 // a unit is approved — ads appear only once the key is filled in.
 //
-// NOTE: Adsterra also expects its ads.txt record in public/ads.txt (from the
-// dashboard). Without it, demand-side platforms cannot verify the inventory.
+// NOTE: Adsterra needs NO ads.txt record (user-confirmed 2026-10-11; the
+// dashboard has no such thing). public/ads.txt serves AdSense only - add the
+// pub-ID line after approval.
 
 export type AdSlot = {
   key: string;
