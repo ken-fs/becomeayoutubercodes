@@ -236,10 +236,20 @@ if (!prev) {
   process.exit(0);
 }
 
+// 2026-10-13：变化交给自动更新引擎（Ship/scripts/autopilot）——它多源确认后改数据、构建、上线，再推飞书说改了什么；
+// 引擎不在才退回原来的「请手动更新」通知
+async function handoff(reason, fallback) {
+  try {
+    const { trigger } = await import(join(SHIP, "scripts", "autopilot", "trigger.mjs"));
+    if (trigger("becomeayoutubercodes", reason)) { log(`AUTOPILOT ${reason}`); return; }
+  } catch {}
+  fallback();
+}
+
 const changed = ["name", "description", "updated"].filter((k) => prev.game?.[k] !== game[k]);
 if (changed.length) {
   log(`GAME_CHANGED ${changed.join(",")}: updated ${prev.game?.updated} → ${game.updated}`);
-  notify("🆕 游戏更新", `${changed.join("/")} 变化 → 查新码再更新站点`, "Glass");
+  await handoff(`Be a YouTuber 游戏更新（${changed.join("/")}）：查新码`, () => notify("🆕 游戏更新", `${changed.join("/")} 变化 → 查新码再更新站点`, "Glass"));
 }
 
 // 新游戏的两类信号：元数据变化（普通）+ 描述出现 code（🚨 独家页要翻转）
@@ -249,18 +259,18 @@ if (ngChanged.length) {
 }
 if (newGameHasCode && !prev.newGameHasCode) {
   log(`🚨 NEWGAME_CODES_APPEARED 描述出现 code 字样`);
-  notify("🚨 Become a Youtuber! 💻 出码了", "游戏描述出现 code 字样 → 验证后翻转 /become-a-youtuber/ 状态页", "Sosumi");
+  await handoff("新游戏 Become a Youtuber! 💻 的描述出现 code 字样：验证后翻转 /become-a-youtuber/ 状态页", () => notify("🚨 Become a Youtuber! 💻 出码了", "游戏描述出现 code 字样 → 验证后翻转 /become-a-youtuber/ 状态页", "Sosumi"));
 } else if (ngChanged.length) {
   notify("💻 新游戏有更新", `${ngChanged.join("/")} 变化，暂无码系统信号`, "Blow");
 }
 
 if (newCandidates.length) {
   log(`🚨 NEW_CODES ${newCandidates.join(" ")}`);
-  notify(
+  await handoff(`码源出现本站没有的码 ${newCandidates.slice(0, 8).join(" ")}`, () => notify(
     "🚨 新码待确认",
     `${newCandidates.slice(0, 8).join(" ")} → 双源确认后更新 src/data/game.json`,
     "Sosumi",
-  );
+  ));
 }
 
 if (autoResult?.added?.length) {
